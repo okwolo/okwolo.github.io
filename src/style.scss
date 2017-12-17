@@ -1,8 +1,10 @@
 body {
     /* http://www.svgeneration.com/recipes/Diagonal-Stripes/ */
     background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc5JyBoZWlnaHQ9JzE4JyB2aWV3Qm94PScwIDAgNSAxMCc+DQoJPHJlY3Qgd2lkdGg9JzExMCUnIHg9Jy01JScgeT0nLTUlJyBoZWlnaHQ9JzExMCUnIGZpbGw9JyNmZmZmY2MnLz4NCgk8bGluZSB4MT0nNycgeTE9JzEnIHgyPSctMicgeTI9JzEwJyBzdHJva2U9JyNlYmViYmInIHN0cm9rZS13aWR0aD0nLjInLz4NCgk8bGluZSB4MT0nNycgeTE9JzYnIHgyPSctMicgeTI9JzE1JyBzdHJva2U9JyNlYmViYmInIHN0cm9rZS13aWR0aD0nLjInLz4NCgk8bGluZSB4MT0nNycgeTE9Jy00JyB4Mj0nLTInIHkyPSc1JyBzdHJva2U9JyNlYmViYmInIHN0cm9rZS13aWR0aD0nLjInLz4NCjwvc3ZnPg==);
+    font-family: 'Open Sans', sans-serif;
     background-color: #ffffcc;
     text-align: center;
+    color: #330030;
     width: 100%;
     margin: 0;
 }
@@ -41,6 +43,47 @@ body {
                         transition-delay: 0s;
                     }
                 }
+            }
+        }
+    }
+
+    .subtitle {
+        letter-spacing: 0.07em;
+        font-weight: 600;
+        font-size: 1.4em;
+        margin: 25px;
+    }
+
+    .buttons {
+        display: inline-block;
+
+        .button {
+            transition: transform 0.2s ease-out;
+            background-color: #330030;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            box-sizing: border-box;
+            border-radius: 10px;
+            padding: 10px 16px;
+            user-select: none;
+            color: #ffffcc;
+            font-size: 1.4em;
+            font-weight: 900;
+            height: 51px;
+
+            &:hover {
+                cursor: pointer;
+            }
+
+            &:active {
+                transform: translateX(2px) translateY(3px);
+            }
+
+            &.shadow {
+                transform: translateX(3px) translateY(-46px);
+                position: relative;
+                opacity: 0.1;
+                z-index: -1;
             }
         }
     }
