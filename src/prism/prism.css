@@ -1,0 +1,55 @@
+pre[class*="language-"] {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    background: #330030;
+    word-spacing: normal;
+    border-radius: .1em;
+    font-size: 1.1em;
+    word-break: normal;
+    word-wrap: normal;
+    margin: .5em .5em;
+    white-space: pre;
+    line-height: 1.5;
+    text-align: left;
+    padding: 0 1.5em;
+    overflow: auto;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+}
+
+pre[class*="language-"] span {
+    color: rgba(255, 255, 255, 0.6);
+}
+pre[class*="language-"],
+.token.boolean {
+    color: rgba(255, 255, 204, 0.8);
+}
+.token.comment {
+    color: rgba(255, 255, 204, 0.4);
+}
+.token.string {
+    color: rgb(255, 255, 204);
+}
+
+/* markdown */
+.token.deleted {
+    color: #ff2c5a;
+}
+.token.inserted {
+    color: #5fdf70;
+}
+
+.token.important,
+.token.bold {
+    font-weight: bold;
+}
+.token.italic {
+    font-style: italic;
+}
+

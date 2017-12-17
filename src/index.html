@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>okwolo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="favicon.ico">
+    <link href="style.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="banner">
+        <div class="title">
+            <div class="letter">
+                <img src="res/o.svg">
+                <img class="shadow" src="res/o.svg">
+            </div>
+            <div class="letter">
+                <img src="res/k.svg">
+                <img class="shadow" src="res/k.svg">
+            </div>
+            <div class="letter">
+                <img src="res/w.svg">
+                <img class="shadow" src="res/w.svg">
+            </div>
+            <div class="letter">
+                <img src="res/o.svg">
+                <img class="shadow" src="res/o.svg">
+            </div>
+            <div class="letter">
+                <img src="res/l.svg">
+                <img class="shadow" src="res/l.svg">
+            </div>
+            <div class="letter">
+                <img src="res/o.svg">
+                <img class="shadow" src="res/o.svg">
+            </div>
+        </div>
+        <div class="subtitle">
+            light javascript framework to build web applicationss
+        </div>
+    </div>
+
+    <img style="width: 100%;" src="https://i.gyazo.com/ea02c656ecf4df2d74dc39583c1780d8.png">
+
+    <div style="width: 700px; display: inline-block;">
+        <pre class="language-javascript">
+            <code>
+let app = okwolo(document.body);
+
+// set the application's state
+app.setState({
+    fruits: ['orange', 'apple', 'pear']
+});
+
+let FruitComponent = ({type}) => (
+    ['li.fruit', {}, [
+        type,
+    ]]
+);
+
+app(() => ({fruits}) => (
+    ['ul.fruit-list', {},
+        fruits.map((type) => (
+            [FruitComponent, {type}]
+        )),
+    ]
+));
+            </code>
+        </pre>
+
+    <pre class="language-diff">
+        <code>
+- const m = () => {
++ const m = () => {
+      let i = 10;
+      while (--i) {
+          console.log('test')
+      }
+  };
+            </code>
+        </pre>
+    </div>
+
+    <link href="prism/prism.css" rel="stylesheet" />
+    <script src="prism/prism.js"></script>
+</body>
+</html>
