@@ -4,18 +4,25 @@ body {
     font-family: 'Open Sans', sans-serif;
     background-color: #ffffcc;
     text-align: center;
+    min-width: 1200px;
     color: #330030;
     width: 100%;
     margin: 0;
 }
 
+::selection {
+    background: rgba(0, 0, 0, 0.1);
+}
+
 .banner {
-    padding: 200px 0 200px;
+    padding: 160px 0 120px;
 
     .title {
-        grid-template-columns: 200px 180px 270px 200px 84px 178px;
+        grid-template-columns: 18% 16% 24.5% 18% 7.5% 16%;
         display: inline-grid;
+        user-select: none;
         margin: 0 auto;
+        width: 1112px;
         height: 20%;
 
         .letter {
@@ -58,7 +65,8 @@ body {
         display: inline-block;
 
         .button {
-            transition: transform 0.2s ease-out;
+            box-shadow: 4px 6px 0px 0px rgba(0,0,0,0.1);
+            transition: all 0.2s ease-out;
             background-color: #330030;
             text-transform: uppercase;
             letter-spacing: 0.18em;
@@ -68,22 +76,82 @@ body {
             user-select: none;
             color: #ffffcc;
             font-size: 1.4em;
-            font-weight: 900;
+            font-weight: 700;
+            cursor: pointer;
             height: 51px;
 
             &:hover {
-                cursor: pointer;
+                box-shadow: 4px 7px 0px 0px rgba(0,0,0,0.1);
+                transform: translateY(-1px);
             }
 
             &:active {
+                box-shadow: 1px 3px 0px 0px rgba(0,0,0,0.1);
                 transform: translateX(2px) translateY(3px);
             }
+        }
+    }
+}
 
-            &.shadow {
-                transform: translateX(3px) translateY(-46px);
-                position: relative;
+.tiles {
+    grid-template-columns: repeat(4, 22.5%);
+    grid-column-gap: 3.333%;
+    display: inline-grid;
+    margin: 0 auto;
+    width: 1400px;
+    margin: 20px;
+
+    .tile {
+        text-align: center;
+
+        & > div {
+            display: inline-block;
+            width: 100%;
+        }
+
+        .icon {
+            text-align: center;
+            user-select: none;
+            height: 60px;
+
+            img {
+                display: block;
+                margin: 0 auto;
+                height: 60px;
+                width: 60px;
+            }
+
+            .shadow {
+                transform: translateX(1px) translateY(-56px);
                 opacity: 0.1;
-                z-index: -1;
+            }
+        }
+
+        .title {
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 800;
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        .copy {
+            letter-spacing: 0.1em;
+            line-height: 1.5em;
+            font-weight: 700;
+            font-size: 0.9em;
+        }
+
+        .link {
+            text-decoration: underline;
+            letter-spacing: 0.1em;
+            user-select: none;
+            font-weight: 700;
+            cursor: pointer;
+            margin: 10px;
+
+            &:active {
+                transform: translateY(1px)
             }
         }
     }

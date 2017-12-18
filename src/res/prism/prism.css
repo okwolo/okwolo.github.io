@@ -23,6 +23,11 @@ pre[class*="language-"] {
     hyphens: none;
 }
 
+pre[class*="language-"]::selection,
+pre[class*="language-"] *::selection {
+    background: rgb(139, 53, 132);
+}
+
 pre[class*="language-"] span {
     color: rgba(255, 255, 255, 0.6);
 }
