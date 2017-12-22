@@ -4,8 +4,8 @@ body {
     font-family: 'Open Sans', sans-serif;
     background-color: #ffffcc;
     text-align: center;
-    min-width: 1200px;
     color: #330030;
+    min-width: 800px;
     width: 100%;
     margin: 0;
 }
@@ -14,39 +14,73 @@ body {
     background: rgba(0, 0, 0, 0.1);
 }
 
+hr {
+    border-color: #330030;
+    border-bottom: none;
+    margin: 80px auto;
+    opacity: 0.2;
+    width: 50%;
+}
+
+h1.title {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 800;
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+p.copy {
+    letter-spacing: 0.1em;
+    line-height: 1.5em;
+    font-weight: 700;
+    font-size: 0.9em;
+}
+
+@mixin letter-height() {
+    max-height: 280px;
+    min-height: 200px;
+    height: 20vw;
+};
+
 .banner {
     padding: 160px 0 120px;
 
     .title {
         grid-template-columns: 18% 16% 24.5% 18% 7.5% 16%;
+        @include letter-height();
         display: inline-grid;
         user-select: none;
+        max-width: 1120px;
+        min-width: 800px;
         margin: 0 auto;
-        width: 1112px;
-        height: 20%;
+        width: 80vw;
 
         .letter {
+            @include letter-height();
             text-align: left;
-            height: 280px;
 
-            & > img {
-                transition: all 0.4s ease;
+            .wrapper {
+                height: 0;
+            }
+
+            img {
+                transition: transform 0.4s ease;
+                @include letter-height();
                 transition-delay: 0.2s;
-                height: 280px;
 
                 &.shadow {
-                    transform: translateY(-280px);
                     opacity: 0.1;
                 }
             }
 
             &:hover {
-                & > img {
-                    transform: translateY(-16px) scale(1.01);
+                img {
+                    transform: translateY(-1.5vw) scale(1.02);
                     transition-delay: 0s;
 
                     &.shadow {
-                        transform: translateX(6px) translateY(-280px);
+                        transform: translateX(0.75vw);
                         transition-delay: 0s;
                     }
                 }
@@ -99,7 +133,13 @@ body {
     display: inline-grid;
     margin: 0 auto;
     width: 1400px;
-    margin: 20px;
+
+    @media screen and (max-width: 1400px) {
+        grid-template-columns: repeat(2, 47.5%);
+        grid-column-gap: 5%;
+        grid-row-gap: 50px;
+        width: 90%;
+    }
 
     .tile {
         text-align: center;
@@ -110,6 +150,7 @@ body {
         }
 
         .icon {
+            transition: transform 0.3s ease-out;
             text-align: center;
             user-select: none;
             height: 60px;
@@ -121,25 +162,18 @@ body {
                 width: 60px;
             }
 
+            &:hover {
+                transform: translateY(-1px);
+
+                .shadow {
+                    transform: translateX(0px) translateY(-56px);
+                }
+            }
+
             .shadow {
                 transform: translateX(1px) translateY(-56px);
                 opacity: 0.1;
             }
-        }
-
-        .title {
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-weight: 800;
-            font-size: 1.2em;
-            margin: 10px 0;
-        }
-
-        .copy {
-            letter-spacing: 0.1em;
-            line-height: 1.5em;
-            font-weight: 700;
-            font-size: 0.9em;
         }
 
         .link {
@@ -148,11 +182,24 @@ body {
             user-select: none;
             font-weight: 700;
             cursor: pointer;
-            margin: 10px;
+            margin: 0 0 10px;
 
             &:active {
                 transform: translateY(1px)
             }
         }
+    }
+}
+
+.quickstart {
+    margin: 0 auto;
+    width: 800px;
+
+    h1.title {
+        text-align: left;
+    }
+
+    p.copy {
+        text-align: left;
     }
 }
