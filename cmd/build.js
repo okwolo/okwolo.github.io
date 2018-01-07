@@ -1,7 +1,15 @@
+const fs = require('fs');
+const path = require('path');
+
+const okwolo = require('okwolo/server');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+
+// ignore sass file requires when building static pages
+require.extensions['.scss'] = (module) => module.exports = '';
+const pages = require('../src/data/pages');
 
 const config = {
     entry: './src/index.js',
@@ -11,9 +19,6 @@ const config = {
     },
     module: {
         rules: [{
-            test: /\.html?$/,
-            loader: 'file-loader?name=../dist/[name].html',
-        }, {
             test: /\.js$/,
             exclude: /node_modules/,
             use: {
@@ -45,7 +50,7 @@ const config = {
             to: '../dist/res/',
         }]),
         new UglifyJSPlugin(),
-        new ExtractTextPlugin('../dist/styles.css'),
+        new ExtractTextPlugin('../dist/style.css'),
     ],
 };
 
@@ -57,4 +62,23 @@ compiler.run((err, stats) => {
     } else {
         console.log(stats.toString('minimal'));
     }
+});
+
+const template = fs.readFileSync('./src/template.html', 'utf8');
+
+pages.forEach(({pathname, component}) => {
+    const app = okwolo((content) => {
+        const dir = path.join('dist', pathname);
+        if (!fs.existsSync(dir)) {
+            fs.mkdirSync(dir);
+        }
+        fs.writeFileSync(
+            path.join(dir, 'index.html'),
+            template.replace('{{content}}', content)
+        );
+    });
+
+    app.setState({});
+
+    app(component);
 });
