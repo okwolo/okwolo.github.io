@@ -1,21 +1,18 @@
+const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
-const extractSass = new ExtractTextPlugin({
-    filename: 'dist/style.css',
-});
-
-module.exports = {
+const config = {
     entry: './src/index.js',
     output: {
         path: __dirname,
-        filename: 'dist/index.js',
+        filename: '../dist/index.js',
     },
     module: {
         rules: [{
             test: /\.html?$/,
-            loader: 'file-loader?name=dist/[name].html',
+            loader: 'file-loader?name=../dist/[name].html',
         }, {
             test: /\.js$/,
             exclude: /node_modules/,
@@ -27,7 +24,7 @@ module.exports = {
             },
         }, {
             test: /\.scss$/,
-            use: extractSass.extract({
+            use: ExtractTextPlugin.extract({
                 use: [{
                     loader: 'css-loader',
                 }, {
@@ -42,14 +39,22 @@ module.exports = {
         }],
     },
     plugins: [
-        new CopyWebpackPlugin([
-            {
-                context: './src/res/',
-                from: '**/*',
-                to: './dist/res/',
-            },
-        ]),
+        new CopyWebpackPlugin([{
+            context: './src/res/',
+            from: '**/*',
+            to: '../dist/res/',
+        }]),
         new UglifyJSPlugin(),
-        extractSass,
+        new ExtractTextPlugin('../dist/styles.css'),
     ],
 };
+
+const compiler = webpack(config);
+
+compiler.run((err, stats) => {
+    if (err) {
+        console.error(err);
+    } else {
+        console.log(stats.toString('minimal'));
+    }
+});

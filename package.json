@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "build": "webpack",
+        "build": "node cmd/build",
         "dev": "run-p serve \"build -- --watch\"",
         "serve": "node cmd/serve"
     },
@@ -28,5 +28,10 @@
     },
     "dependencies": {
         "okwolo": "^2.0.0"
+    },
+    "postcss": {
+        "plugins": {
+            "postcss-cssnext": {}
+        }
     }
 }
