@@ -59,6 +59,10 @@
     .buttons {
         display: inline-block;
 
+        a {
+            text-decoration: none;
+        }
+
         .button {
             box-shadow: 4px 6px 0px 0px rgba(0,0,0,0.1);
             transition: all 0.2s ease-out;
@@ -96,10 +100,10 @@
     width: 1400px;
 
     @media screen and (max-width: 1400px) {
-        grid-template-columns: repeat(2, 47.5%);
-        grid-column-gap: 5%;
+        grid-template-columns: repeat(2, 42%);
+        grid-column-gap: 16%;
         grid-row-gap: 50px;
-        width: 90%;
+        width: 80%;
     }
 
     .tile {
@@ -142,8 +146,8 @@
             letter-spacing: 0.1em;
             user-select: none;
             font-weight: 700;
-            cursor: pointer;
             margin: 0 0 10px;
+            color: inherit;
 
             &:active {
                 transform: translateY(1px)
@@ -162,5 +166,13 @@
 
     p.copy {
         text-align: left;
+    }
+}
+
+.footer {
+    margin-bottom: 80px;
+
+    a {
+        color: inherit;
     }
 }

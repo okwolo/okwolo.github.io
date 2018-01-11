@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const readline = require('readline');
 
 const okwolo = require('okwolo/server');
 const webpack = require('webpack');
@@ -9,7 +10,6 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 // ignore sass file requires when building static pages
 require.extensions['.scss'] = (module) => module.exports = '';
-const pages = require('../src/data/pages');
 
 const config = {
     entry: './src/index.js',
@@ -54,31 +54,44 @@ const config = {
     ],
 };
 
+const generateTemplates = () => {
+    const template = fs.readFileSync('./src/template.html', 'utf8');
+
+    // require every time so that contents are updated
+    require('../src/data/pages').forEach(({pathname, component}) => {
+        const app = okwolo((content) => {
+            const dir = path.join('dist', pathname);
+            if (!fs.existsSync(dir)) {
+                fs.mkdirSync(dir);
+            }
+            fs.writeFileSync(
+                path.join(dir, 'index.html'),
+                template.replace('{{content}}', content)
+            );
+        });
+
+        app.setState({});
+
+        app(component);
+    });
+};
+
 const compiler = webpack(config);
 
-compiler.run((err, stats) => {
+const watching = compiler.watch({}, (err, stats) => {
     if (err) {
         console.error(err);
     } else {
         console.log(stats.toString('minimal'));
+        generateTemplates();
     }
 });
 
-const template = fs.readFileSync('./src/template.html', 'utf8');
-
-pages.forEach(({pathname, component}) => {
-    const app = okwolo((content) => {
-        const dir = path.join('dist', pathname);
-        if (!fs.existsSync(dir)) {
-            fs.mkdirSync(dir);
-        }
-        fs.writeFileSync(
-            path.join(dir, 'index.html'),
-            template.replace('{{content}}', content)
-        );
-    });
-
-    app.setState({});
-
-    app(component);
+readline.emitKeypressEvents(process.stdin);
+process.stdin.setRawMode(true);
+process.stdin.on('keypress', (str, key) => {
+    if (key.ctrl && key.name === 'c') {
+        watching.close();
+        process.exit(0);
+    }
 });

@@ -2,7 +2,7 @@
 
 Okwolo is designed so that all functionality is provided by swappable modules. These modules can be used to add, modify or remove any features of the resulting apps. Kits represent different combinations of these modules which can be used to satisfy a wide variety of use cases. It is important to note that the order of modules can be important, especially in cases where one module depends on another. (ex. state and state.handler)
 
-This document lists three useful configurations and lists their included modules diffed with the default standard kit. All kits can be found in their transpiled/minified/gzipped forms in the [dist folder](https://github.com/okwolo/okwolo/blob/master/dist). Most of the tools available to modules are also available after the app is instantiated and that the kit pattern exists primarily for development ergonomics.
+This document lists describes some useful configurations and lists their included modules diffed with the default standard kit. All kits can be found in their transpiled/minified/gzipped forms in the [dist folder](https://github.com/okwolo/okwolo/blob/master/dist). Most of the tools available to modules are also available after the app is instantiated and that the kit pattern exists primarily for development ergonomics.
 
 ## standard
 

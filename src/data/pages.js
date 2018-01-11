@@ -4,7 +4,19 @@ module.exports = [
         component: require('../pages/home'),
     },
     {
-        pathname: '/test/',
+        pathname: '/syntax/',
+        component: require('../pages/syntax'),
+    },
+    {
+        pathname: '/blobs/',
+        component: require('../pages/home'),
+    },
+    {
+        pathname: '/modules/',
+        component: require('../pages/home'),
+    },
+    {
+        pathname: '/kits/',
         component: require('../pages/home'),
     },
 ];

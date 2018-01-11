@@ -2,6 +2,9 @@ require('./style.scss');
 
 const tiles = require('../../data/tiles');
 
+const Codeblock = require('../../components/codeblock');
+const Link = require('../../components/link');
+
 module.exports = () => () => (
     ['div', {}, [
         ['div.banner', {}, [
@@ -19,8 +22,10 @@ module.exports = () => () => (
                 'light javascript framework to build web applications',
             ]],
             ['div.buttons', {}, [
-                ['div.button', {}, [
-                    'Get Started',
+                ['a', {href: '#quickstart'}, [
+                    ['div.button', {}, [
+                        'Get Started',
+                    ]],
                 ]],
             ]],
         ]],
@@ -31,25 +36,67 @@ module.exports = () => () => (
                         ['img', {src: `/res/icons/${title}.svg`}],
                         ['img.shadow', {src: `/res/icons/${title}.svg`}],
                     ]],
-                    ['h1.title', {}, [
+                    ['h2.title', {}, [
                         title,
                     ]],
                     ['p.copy', {}, [
                         copy,
                     ]],
-                    ['div.link', {}, [
+                    [Link, {path: `/${title}/`}, [
                         'more info',
                     ]],
                 ]]
             )),
         ],
-        ['hr'],
+        ['hr#quickstart'],
         ['div.quickstart', {}, [
-            ['h1.title', {}, [
+            ['h2.title', {}, [
                 'Quick Start',
             ]],
             ['p.copy', {}, [
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+                'To use okwolo as a package, simply require the desired kit directly.',
+            ]],
+            [Codeblock, {}, [`
+                require('okwolo/standard');
+            `]],
+            ['p.copy', {}, [
+                'Alternatively, the library can be imported using a script tag. The okwolo function will be available in the global window object.',
+            ]],
+            [Codeblock, {}, [`
+                <script src="/standard.min.js"></script>
+            `]],
+            ['p.copy', {}, [
+                'Here is a minimal Hello-World application which demonstrates the use of the router and some basic view syntax.',
+            ]],
+            [Codeblock, {}, [`
+                const app = okwolo(document.body);
+
+                app.setState({
+                    customGreeting: 'Hello',
+                    defaultGreeting: 'Hello World!',
+                });
+
+                // layout rendered with username from path params
+                app('/user/:username', ({username}) => (state) => (
+                    ['div.greeting.custom', {}, [
+                        state.customGreeting + ' ' + username,
+                    ]]
+                ));
+
+                // fallback layout if the path does not match
+                app(() => (state) => (
+                    ['div.greeting.default', {}, [
+                        state.defaultGreeting,
+                    ]]
+                ));
+            `]],
+        ]],
+        ['hr'],
+        ['div.footer', {}, [
+            ['a', {href: 'https://github.com/okwolo/okwolo'}, [
+                ['h2.title', {}, [
+                    'View on GitHub',
+                ]],
             ]],
         ]],
     ]]

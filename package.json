@@ -1,7 +1,7 @@
 {
     "scripts": {
         "build": "node cmd/build",
-        "dev": "run-p serve \"build -- --watch\"",
+        "dev": "run-p serve build",
         "serve": "node cmd/serve",
         "deploy": "push-dir --dir=dist --branch=gh-pages"
     },
