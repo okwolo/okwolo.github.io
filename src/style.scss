@@ -14,6 +14,10 @@ body {
     background: rgba(0, 0, 0, 0.1);
 }
 
+a {
+    color: #330030;
+}
+
 hr {
     border-color: #330030;
     border-bottom: none;
@@ -27,7 +31,7 @@ h1.title {
     letter-spacing: 0.1em;
     font-weight: 800;
     font-size: 1.6em;
-    margin: 10px 0;
+    margin: 16px 0;
 }
 
 h2.title {
@@ -46,3 +50,32 @@ p.copy {
 }
 
 /* TODO move into components/pages */
+
+.footer {
+    margin-bottom: 80px;
+
+    a {
+        color: inherit;
+    }
+}
+
+.tile-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    width: 80%;
+
+    .center {
+        text-align: center;
+    }
+
+    .icon {
+        img {
+            height: 80px;
+        }
+    }
+
+    > * {
+        text-align: left;
+    }
+}

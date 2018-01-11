@@ -1,7 +1,7 @@
 module.exports = [
     {
         title: 'syntax',
-        copy: 'The dom syntax is designed with a priority given to familiarity and with the goal of not needing to be transpiled. Elements are represented as an array containing the tagName, attributes and children. To facilitate common use cases ids, classes and styles can all be added inline after the tagName',
+        copy: 'The view syntax is designed with a priority given to familiarity and with the goal of not needing to be transpiled. Elements are represented as an array containing the tagName, attributes and children. To facilitate common use cases ids, classes and styles can all be added inline after the tagName.',
     },
     {
         title: 'blobs',

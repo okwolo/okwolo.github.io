@@ -66,7 +66,7 @@ module.exports = () => () => (
                 <script src="/standard.min.js"></script>
             `]],
             ['p.copy', {}, [
-                'Here is a minimal Hello-World application which demonstrates the use of the router and some basic view syntax.',
+                'Here is a small Hello-World application which demonstrates the use of the router and some basic view syntax.',
             ]],
             [Codeblock, {}, [`
                 const app = okwolo(document.body);
@@ -93,7 +93,7 @@ module.exports = () => () => (
         ]],
         ['hr'],
         ['div.footer', {}, [
-            ['a', {href: 'https://github.com/okwolo/okwolo'}, [
+            ['a', {href: 'https://github.com/okwolo/okwolo', target: '_blank'}, [
                 ['h2.title', {}, [
                     'View on GitHub',
                 ]],
