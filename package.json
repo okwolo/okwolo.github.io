@@ -29,7 +29,7 @@
         "webpack": "^3.10.0"
     },
     "dependencies": {
-        "okwolo": "^2.0.0"
+        "okwolo": "^3.0.0"
     },
     "postcss": {
         "plugins": {

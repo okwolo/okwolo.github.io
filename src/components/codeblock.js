@@ -43,7 +43,7 @@ module.exports = ({language = 'javascript', children}) => {
 
     updatePrism();
 
-    return (
+    return () => (
         ['pre.language-'+language, {}, [
             ['code', {}, children],
         ]]

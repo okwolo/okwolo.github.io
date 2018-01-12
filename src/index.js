@@ -26,6 +26,11 @@ pages.forEach(({pathname, title, component}) => {
                 wrapper.style.opacity = 1;
             }, 0);
         }
-        return component()();
+        return [component];
     });
+});
+
+app('**', () => () => {
+    app.redirect('/');
+    return '';
 });

@@ -2,7 +2,7 @@ require('./doc.scss');
 
 const Link = require('../components/link');
 
-module.exports = ({icon, name, copy, children, menu = []}) => (
+module.exports = ({icon, name, copy, children, menu = []}) => () => (
     ['div.tile-page', {}, [
         ['div.home-link', {}, [
             [Link, {path: '/'}, [

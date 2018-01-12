@@ -1,4 +1,4 @@
-module.exports = ({path, children}) => (
+module.exports = ({path, children}) => () => (
     ['a.link', {
         href: path,
         onclick: (e) => {

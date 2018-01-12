@@ -76,7 +76,7 @@ module.exports = () => () => (
                     ));
 
                     // fallback to render this element regardless of route
-                    app(() => (state) => (
+                    app('**', () => (state) => (
                         ['div', {}, [
                             state.default,
                         ]]

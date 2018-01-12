@@ -101,7 +101,7 @@ module.exports = () => () => (
                 ));
 
                 // fallback layout if the path does not match
-                app(() => (state) => (
+                app('**', () => (state) => (
                     ['div.greeting.default', {}, [
                         state.defaultGreeting,
                     ]]
