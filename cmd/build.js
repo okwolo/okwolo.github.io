@@ -58,7 +58,7 @@ const generateTemplates = () => {
     const template = fs.readFileSync('./src/template.html', 'utf8');
 
     // require every time so that contents are updated
-    require('../src/data/pages').forEach(({pathname, component}) => {
+    require('../src/pages').forEach(({pathname, component}) => {
         const app = okwolo((content) => {
             const dir = path.join('dist', pathname);
             if (!fs.existsSync(dir)) {

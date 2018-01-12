@@ -1,15 +1,27 @@
 require('./style.scss');
 
-const pages = require('./data/pages');
-
 const okwolo = require('okwolo/lite');
 
-const app = okwolo(document.querySelector('.wrapper'));
+const pages = require('./pages');
+
+const wrapper = document.querySelector('.wrapper');
+
+const app = okwolo(wrapper);
 
 window.app = app;
 
 app.setState({});
 
-pages.forEach(({pathname, component}) => {
-    app(pathname, component);
+pages.forEach(({pathname, title, component}) => {
+    app(pathname, () => () => {
+        document.title = title;
+        if (!window.location.hash) {
+            wrapper.style.opacity = 0;
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+                wrapper.style.opacity = 1;
+            }, 0);
+        }
+        return component()();
+    });
 });
