@@ -2,10 +2,11 @@ const Codeblock = require('../../components/codeblock');
 const Doc = require('../../components/doc');
 
 const name = 'syntax';
+const icon = '/res/icons/syntax.svg';
 const copy = 'The view syntax is designed with a priority given to familiarity and with the goal of not needing to be transpiled. Elements are represented as an array containing the tagName, attributes and children. To facilitate common use cases ids, classes and styles can all be added inline after the tagName';
 
 module.exports = () => () => (
-    [Doc, {name, copy}, [
+    [Doc, {name, icon, copy}, [
         ['div.section', {}, [
             ['h2.title', {}, [
                 'text elements',

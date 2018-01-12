@@ -17,11 +17,16 @@ module.exports = [
     {
         pathname: '/modules/',
         title: 'okwolo - modules',
-        component: require('../pages/home'),
+        component: require('../pages/modules'),
     },
     {
         pathname: '/kits/',
         title: 'okwolo - kits',
         component: require('../pages/kits'),
+    },
+    {
+        pathname: '/api/',
+        title: 'okwolo - api',
+        component: require('../pages/api'),
     },
 ];

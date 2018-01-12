@@ -2,6 +2,7 @@ const Codeblock = require('../../components/codeblock');
 const Doc = require('../../components/doc');
 
 const name = 'blobs';
+const icon = '/res/icons/blobs.svg';
 const copy = 'Blobs are powerful configuration objects which all modules can listen for. This allows for customization far beyond what is available directly through the api. Okwolo is purposefully built to handle the addition of blobs at any time in an application\'s lifecycle.';
 const menu = [
     null,
@@ -18,7 +19,7 @@ const menu = [
 ];
 
 module.exports = () => () => (
-    [Doc, {name, copy, menu}, [
+    [Doc, {name, icon, copy, menu}, [
         ['div.section', {}, [
             ['p.copy', {}, [
                 'Blobs are added to an application with the "use" function. It takes the name of the blob as the first parameter and the rest of the arguments will be passed to the blob handling functions.',
@@ -66,6 +67,9 @@ module.exports = () => () => (
 
                 app.getState(); // {name: 'John', hobbies: ['gardening']}
             `]],
+            ['p.copy', {}, [
+                'More than one actions can be added at the same time by passing an array of action objects instead of a single one.',
+            ]],
         ]],
         ['div.section', {}, [
             ['h2.title', {}, [
@@ -158,6 +162,9 @@ module.exports = () => () => (
             ['p.copy', {}, [
                 'Middleware functions are called in the order that they are added.',
             ]],
+            ['p.copy', {}, [
+                'More than one middleware can be added at the same time by passing an array of middleware functions instead of a single one.',
+            ]],
         ]],
         ['div.section', {}, [
             ['h2.title', {}, [
@@ -224,6 +231,35 @@ module.exports = () => () => (
                 app.use('watcher', (state, actionType, params) => {
                     console.log(\`action of type \${actionType} was performed\`);
                 });
+            `]],
+            ['p.copy', {}, [
+                'More than one watchers can be added at the same time by passing an array of watcher functions instead of a single one.',
+            ]],
+        ]],
+        ['div.section', {}, [
+            ['h2.title', {}, [
+                'plugins',
+            ]],
+            ['p.copy', {}, [
+                'To accomodate the creation of plugins, the use function can also accept an object as the first argument. This object can contain multiple blobs.',
+            ]],
+            [Codeblock, {}, [`
+                app.use({
+                    watcher: [myFirstWatcher, mySecondWatcher],
+                    route: myRoute
+                });
+            `]],
+            ['p.copy', {}, [
+                'Plugins can also be named to ensure they are only ever used once in a single app instance. This is done by adding a name key to the plugin.',
+            ]],
+            [Codeblock, {}, [`
+                let myPlugin = {
+                    name: 'myPluginName',
+                    middleware: myMiddlware,
+                }
+
+                app.use(myPlugin);
+                app.use(myPlugin); // will not add the middleware again
             `]],
         ]],
     ]]

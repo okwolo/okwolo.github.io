@@ -107,6 +107,13 @@ module.exports = () => () => (
                     ]]
                 ));
             `]],
+            ['p.copy', {}, [
+                'For more information, read the ',
+                [Link, {path: '/api/'}, [
+                    'api guide',
+                ]],
+                '.',
+            ]],
         ]],
         ['hr'],
         ['div.footer', {}, [

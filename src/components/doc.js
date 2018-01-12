@@ -2,7 +2,7 @@ require('./doc.scss');
 
 const Link = require('../components/link');
 
-module.exports = ({name, copy, children, menu = []}) => (
+module.exports = ({icon, name, copy, children, menu = []}) => (
     ['div.tile-page', {}, [
         ['div.home-link', {}, [
             [Link, {path: '/'}, [
@@ -26,14 +26,14 @@ module.exports = ({name, copy, children, menu = []}) => (
             }),
         ],
         ['div.center', {}, [
-            ['div.icon', {}, [
-                ['img', {src: `/res/icons/${name}.svg`}],
+            !!icon && ['div.icon', {}, [
+                ['img', {src: icon}],
             ]],
-            ['h1.title', {}, [
+            !!name && ['h1.title', {}, [
                 name,
             ]],
         ]],
-        ['p.copy', {}, [
+        !!copy && ['p.copy', {}, [
             copy,
         ]],
         ...children.reduce((c, child, index) => {
