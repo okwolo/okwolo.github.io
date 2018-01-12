@@ -197,13 +197,13 @@ module.exports = () => () => (
                 [Codeblock, {}, [`
                     app.setState(0);
 
-                    app.use({action: {
+                    app.use('action', {
                         type: 'INC',
                         target: [],
                         handler: (state, amount = 1) => {
                             return state + amount;
                         },
-                    }});
+                    });
 
                     app.act('INC'); // 1
                     app.act('INC', 3); // 4
@@ -225,13 +225,13 @@ module.exports = () => () => (
                 [Codeblock, {}, [`
                     app.setState(0);
 
-                    app.use({action: {
+                    app.use('action', {
                         type: 'INC',
                         target: [],
                         handler: (state, amount = 1) => {
                             return state + amount;
                         },
-                    }});
+                    });
 
                     app.act('INC'); // 1
                     app.act('INC', 3); // 4
@@ -307,9 +307,7 @@ module.exports = () => () => (
             [Example, {}, [
                 [Codeblock, {}, [`
                     // use a blob with a target key
-                    app.use({
-                        target: document.querySelector('body .wrapper'),
-                    });
+                    app.use('target', document.querySelector('body .wrapper'));
 
                     // blob keys can be arrays
                     app.use('watcher', [

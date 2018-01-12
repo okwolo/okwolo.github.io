@@ -54,6 +54,7 @@ const config = {
     ],
 };
 
+// TODO not working https://docs.aws.amazon.com/AmazonS3/latest/dev/IndexDocumentSupport.html
 const generateTemplates = () => {
     const template = fs.readFileSync('./src/template.html', 'utf8');
 

@@ -6,6 +6,10 @@ const pages = require('./pages');
 
 const wrapper = document.querySelector('.wrapper');
 
+setTimeout(() => {
+    wrapper.style.display = 'block';
+}, 0);
+
 const app = okwolo(wrapper);
 
 window.app = app;
