@@ -3,9 +3,22 @@ const Doc = require('../../components/doc');
 
 const name = 'blobs';
 const copy = 'Blobs are powerful configuration objects which all modules can listen for. This allows for customization far beyond what is available directly through the api. Okwolo is purposefully built to handle the addition of blobs at any time in an application\'s lifecycle.';
+const menu = [
+    null,
+    'action',
+    'base',
+    'build',
+    'builder',
+    'draw',
+    'middleware',
+    'route',
+    'target',
+    'update',
+    'watcher',
+];
 
 module.exports = () => () => (
-    [Doc, {name, copy}, [
+    [Doc, {name, copy, menu}, [
         ['div.section', {}, [
             ['p.copy', {}, [
                 'Blobs are added to an application with the "use" function. It takes the name of the blob as the first parameter and the rest of the arguments will be passed to the blob handling functions.',

@@ -64,6 +64,7 @@ const generateTemplates = () => {
             if (!fs.existsSync(dir)) {
                 fs.mkdirSync(dir);
             }
+            content = content.replace('<script', '&#x3C;script');
             fs.writeFileSync(
                 path.join(dir, 'index.html'),
                 template.replace('{{content}}', content)

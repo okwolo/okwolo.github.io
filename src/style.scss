@@ -42,6 +42,14 @@ h2.title {
     margin: 10px 0;
 }
 
+h3.title {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 800;
+    font-size: 1em;
+    margin: 10px 0;
+}
+
 p.copy {
     letter-spacing: 0.1em;
     line-height: 1.5em;
@@ -49,33 +57,11 @@ p.copy {
     font-size: 0.9em;
 }
 
-/* TODO move into components/pages */
-
+// TODO make footer a component
 .footer {
     margin-bottom: 80px;
 
     a {
         color: inherit;
-    }
-}
-
-.tile-page {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    width: 80%;
-
-    .center {
-        text-align: center;
-    }
-
-    .icon {
-        img {
-            height: 80px;
-        }
-    }
-
-    > * {
-        text-align: left;
     }
 }

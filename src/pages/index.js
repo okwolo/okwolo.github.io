@@ -22,6 +22,6 @@ module.exports = [
     {
         pathname: '/kits/',
         title: 'okwolo - kits',
-        component: require('../pages/home'),
+        component: require('../pages/kits'),
     },
 ];

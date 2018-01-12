@@ -54,6 +54,22 @@ module.exports = () => () => (
                     ]]
                 );
             `]],
+            ['p.copy', {}, [
+                'Including a key in the attributes will ensure that the element will be diffed with itself on next update. If no key is specified, the array index is used instead.',
+            ]],
+            [Codeblock, {}, [`
+                const list = [{id: 321, data: ...}, {id: 456, data: ...}];
+
+                const tagElement = (
+                    ['div', {},
+                        list.map(({id, data}) => (
+                            ['div', {key: id}, [
+                                ...
+                            ]]
+                        )),
+                    ]
+                );
+            `]],
         ]],
         ['div.section', {}, [
             ['h2.title', {}, [
