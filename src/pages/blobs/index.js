@@ -192,7 +192,7 @@ module.exports = () => () => (
                 'target',
             ]],
             ['p.copy', {}, [
-                'The target will be given to the view\'s drawing and updating functions and can be of any type. in the client-side kits, the target should be a dom node whereas the ssr kit expects a callback.',
+                'The target will be given to the view\'s drawing and updating functions and can be of any type. In the client-side kits, the target should be a dom node whereas the ssr kit expects a callback.',
             ]],
             [Codeblock, {}, [`
                 app.use('target', document.querySelector('.app-wrapper'));

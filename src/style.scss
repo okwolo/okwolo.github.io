@@ -7,7 +7,12 @@ body {
     color: #330030;
     min-width: 800px;
     width: 100%;
+    padding: 0 20px;
     margin: 0;
+
+    @media screen and (max-width: 800px) {
+        font-size: 1.2em;
+    }
 }
 
 ::selection {
@@ -55,6 +60,10 @@ p.copy {
     line-height: 1.5em;
     font-weight: 700;
     font-size: 0.9em;
+
+    @media screen and (max-width: 800px) {
+        line-height: 1.3em;
+    }
 }
 
 // TODO make footer a component
