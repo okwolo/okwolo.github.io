@@ -31,6 +31,7 @@ pages.forEach(({pathname, title, component}) => {
 });
 
 app('**', () => () => {
+    console.log('redirecting ...');
     app.redirect('/');
     return '';
 });

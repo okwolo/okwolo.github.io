@@ -3,14 +3,16 @@ body {
     background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc5JyBoZWlnaHQ9JzE4JyB2aWV3Qm94PScwIDAgNSAxMCc+DQoJPHJlY3Qgd2lkdGg9JzExMCUnIHg9Jy01JScgeT0nLTUlJyBoZWlnaHQ9JzExMCUnIGZpbGw9JyNmZmZmY2MnLz4NCgk8bGluZSB4MT0nNycgeTE9JzEnIHgyPSctMicgeTI9JzEwJyBzdHJva2U9JyNlYmViYmInIHN0cm9rZS13aWR0aD0nLjInLz4NCgk8bGluZSB4MT0nNycgeTE9JzYnIHgyPSctMicgeTI9JzE1JyBzdHJva2U9JyNlYmViYmInIHN0cm9rZS13aWR0aD0nLjInLz4NCgk8bGluZSB4MT0nNycgeTE9Jy00JyB4Mj0nLTInIHkyPSc1JyBzdHJva2U9JyNlYmViYmInIHN0cm9rZS13aWR0aD0nLjInLz4NCjwvc3ZnPg==);
     font-family: 'Open Sans', sans-serif;
     background-color: #ffffcc;
+    box-sizing: border-box;
     text-align: center;
     color: #330030;
     min-width: 800px;
-    width: 100%;
     padding: 0 20px;
+    width: 100%;
     margin: 0;
 
     @media screen and (max-width: 800px) {
+        box-sizing: content-box;
         font-size: 1.2em;
     }
 }
