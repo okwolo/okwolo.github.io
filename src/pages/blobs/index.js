@@ -221,7 +221,7 @@ module.exports = () => () => (
                     realTarget = magicallyStringify(vdom);
                 });
 
-                app.use('update', (target, vdom, address, view) => {
+                app.use('update', (target, vdom, address, view, identity) => {
                     realTarget = magicallyStringify(vdom);
                 });
             `]],
