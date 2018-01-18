@@ -94,6 +94,12 @@ module.exports = () => () => (
                 'The build function is responsible for generating vdom from the input layout syntax.',
             ]],
             [Codeblock, {}, [`
+                app.use('build', (element, queue) => {
+                    // ...
+                    return vdom;
+                });
+            `]],
+            [Codeblock, {}, [`
                 const element = (             =>        const vdom = {
                     ['div#title', {}, [       =>            tagName: 'div',
                         'Hello World!',       =>            attributes: {

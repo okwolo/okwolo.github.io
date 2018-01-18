@@ -7,7 +7,7 @@ module.exports = ({icon, name, copy, children, menu = []}) => () => (
         ['div.home-link', {}, [
             [Link, {path: '/'}, [
                 ['h2.title', {}, [
-                    '< back',
+                    'home',
                 ]],
             ]],
         ]],
@@ -17,7 +17,7 @@ module.exports = ({icon, name, copy, children, menu = []}) => () => (
                     return '';
                 }
                 return (
-                    ['a', {href: `#${item}`}, [
+                    [Link, {path: `#${item}`}, [
                         ['h3.title', {}, [
                             item,
                         ]],
@@ -43,7 +43,7 @@ module.exports = ({icon, name, copy, children, menu = []}) => () => (
         }, []),
         ['hr'],
         ['div.footer.center', {}, [
-            ['a', {href: 'https://github.com/okwolo/okwolo', target: '_blank'}, [
+            [Link, {path: 'https://github.com/okwolo/okwolo'}, [
                 ['h2.title', {}, [
                     'View on GitHub',
                 ]],

@@ -1,11 +1,26 @@
 const app = require('../app');
 
-module.exports = ({path, children}) => () => (
-    ['a.link', {
+const onclick = (path) => (e) => {
+    if (!e.shiftKey && !e.ctrlKey) {
+        e.preventDefault();
+        app.redirect(path);
+    }
+};
+
+module.exports = ({path, children}) => {
+    const isHashChange = !!path.match(/^#.*/g);
+    const isNavigation = !!path.match(/^\/.*/g);
+    const attributes = {
         href: path,
-        onclick: (e) => {
-            app.redirect(path);
-            e.preventDefault();
-        },
-    }, children]
-);
+    };
+    if (isNavigation) {
+        attributes.onclick = onclick(path);
+    } else {
+        if (!isHashChange) {
+            attributes.target = '_blank';
+        }
+    }
+    return () => (
+        ['a.link', attributes, children]
+    );
+};

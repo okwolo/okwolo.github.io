@@ -1,5 +1,6 @@
 const Codeblock = require('../../components/codeblock');
 const Doc = require('../../components/doc');
+const Link = require('../../components/link');
 
 const name = 'syntax';
 const icon = '/res/icons/syntax.svg';
@@ -39,7 +40,7 @@ module.exports = () => () => (
             `]],
             ['p.copy', {}, [
                 'For convenience, the tag string is parsed to extract the id, classname(s) and style. The "className" element attribute also supports ',
-                ['a', {href: 'https://www.npmjs.com/package/classnames', target: '_blank'}, ['classnames']],
+                [Link, {path: 'https://www.npmjs.com/package/classnames'}, ['classnames']],
                 ' style format.',
             ]],
             [Codeblock, {}, [`

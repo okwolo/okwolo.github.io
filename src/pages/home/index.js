@@ -39,7 +39,7 @@ module.exports = () => () => (
                 'light javascript framework to build web applications',
             ]],
             ['div.buttons', {}, [
-                ['a', {href: '#quickstart'}, [
+                [Link, {path: '#quickstart'}, [
                     ['div.button', {}, [
                         'Get Started',
                     ]],
@@ -117,7 +117,7 @@ module.exports = () => () => (
         ]],
         ['hr'],
         ['div.footer', {}, [
-            ['a', {href: 'https://github.com/okwolo/okwolo', target: '_blank'}, [
+            [Link, {path: 'https://github.com/okwolo/okwolo'}, [
                 ['h2.title', {}, [
                     'View on GitHub',
                 ]],

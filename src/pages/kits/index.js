@@ -1,5 +1,6 @@
 const Codeblock = require('../../components/codeblock');
 const Doc = require('../../components/doc');
+const Link = require('../../components/link');
 
 const name = 'kits';
 const icon = '/res/icons/kits.svg';
@@ -10,7 +11,7 @@ module.exports = () => () => (
         ['div.section', {}, [
             ['p.copy', {}, [
                 'This page lists describes some useful configurations and lists their included modules diffed with the default standard kit. All kits can be found in their transpiled/minified/gzipped forms in the ',
-                ['a', {href: 'https://github.com/okwolo/okwolo/blob/master/dist', target: '_blank'}, [
+                [Link, {path: 'https://github.com/okwolo/okwolo/blob/master/dist'}, [
                     'dist folder',
                 ]],
                 ' or in at the top level of the package. Most of the tools available to modules are also available after the app is instantiated and that the kit pattern exists primarily for development ergonomics.',
@@ -22,7 +23,7 @@ module.exports = () => () => (
         ['div.section', {}, [
             ['h2.title', {}, [
                 'standard',
-                ['a', {href: 'https://github.com/okwolo/okwolo/blob/master/dist/standard.min.js.gz', target: '_blank'}, [
+                [Link, {path: 'https://github.com/okwolo/okwolo/blob/master/dist/standard.min.js.gz'}, [
                     ['img.badge', {src: 'https://img.shields.io/github/size/okwolo/okwolo/dist/standard.min.js.gz.svg'}],
                 ]],
             ]],
@@ -31,7 +32,7 @@ module.exports = () => () => (
             `]],
             ['p.copy', {}, [
                 'Standard is the default kit and it includes the fullest set of features. Notably, the router uses the familiar matching logic from ',
-                ['a', {href: 'https://www.npmjs.com/package/path-to-regexp', target: '_blank'}, [
+                [Link, {path: 'https://www.npmjs.com/package/path-to-regexp'}, [
                     'express',
                 ]],
                 ' and the state can be manipulated using actions, watchers, middleware and undo/redo.',
@@ -52,7 +53,7 @@ module.exports = () => () => (
         ['div.section', {}, [
             ['h2.title', {}, [
                 'lite',
-                ['a', {href: 'https://github.com/okwolo/okwolo/blob/master/dist/lite.min.js.gz', target: '_blank'}, [
+                [Link, {path: 'https://github.com/okwolo/okwolo/blob/master/dist/lite.min.js.gz'}, [
                     ['img.badge', {src: 'https://img.shields.io/github/size/okwolo/okwolo/dist/lite.min.js.gz.svg'}],
                 ]],
             ]],
@@ -79,7 +80,7 @@ module.exports = () => () => (
         ['div.section', {}, [
             ['h2.title', {}, [
                 'server',
-                ['a', {href: 'https://github.com/okwolo/okwolo/blob/master/dist/server.min.js.gz', target: '_blank'}, [
+                [Link, {path: 'https://github.com/okwolo/okwolo/blob/master/dist/server.min.js.gz'}, [
                     ['img.badge', {src: 'https://img.shields.io/github/size/okwolo/okwolo/dist/server.min.js.gz.svg'}],
                 ]],
             ]],
