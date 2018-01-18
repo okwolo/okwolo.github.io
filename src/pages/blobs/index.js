@@ -184,7 +184,7 @@ module.exports = () => () => (
                 });
 
                 app.redirect('/user/123/profile');
-                // handler is called with uid='123'
+                // handler is called with {uid: '123'}
             `]],
         ]],
         ['div.section', {}, [

@@ -1,14 +1,11 @@
 require('./style.scss');
 
-const okwolo = require('okwolo/lite');
-
+const app = require('./app');
 const pages = require('./pages');
 
 const wrapper = document.querySelector('.wrapper');
 
-const app = okwolo(wrapper);
-
-window.app = app;
+app.use('target', wrapper);
 
 app.setState({});
 

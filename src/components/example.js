@@ -1,6 +1,6 @@
 require('./example.scss');
 
-// TODO add dropdown arrow (waiting on okwolo@3.0.0)
+// TODO add dropdown arrow
 
 module.exports = ({children}) => () => (
     ['div.example', {}, [

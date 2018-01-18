@@ -1,3 +1,5 @@
+const app = require('../app');
+
 module.exports = ({path, children}) => () => (
     ['a.link', {
         href: path,

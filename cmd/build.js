@@ -58,16 +58,26 @@ const generateTemplates = () => {
     const template = fs.readFileSync('./src/template.html', 'utf8');
 
     // require every time so that contents are updated
-    require('../src/pages').forEach(({pathname, component}) => {
+    require('../src/pages').forEach(({title, pathname, description, component}) => {
         const app = okwolo((content) => {
             const dir = path.join('dist', pathname);
             if (!fs.existsSync(dir)) {
                 fs.mkdirSync(dir);
             }
-            content = content.replace('<script', '&#x3C;script');
+            const context = {
+                title,
+                description,
+                content,
+            };
             fs.writeFileSync(
                 path.join(dir, 'index.html'),
-                template.replace('{{content}}', content)
+                template.replace(/\{\{(.*?)\}\}/g, (match, key) => {
+                    if (!key in context) {
+                        console.warn(`build: "${key}" was not found`);
+                        return '';
+                    }
+                    return String(context[key]);
+                })
             );
         });
 
