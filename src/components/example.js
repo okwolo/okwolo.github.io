@@ -1,12 +1,18 @@
 require('./example.scss');
 
-// TODO add dropdown arrow
-
-module.exports = ({children}) => () => (
-    ['div.example', {}, [
+module.exports = ({children}, update) => (closed = true) => (
+    ['div.example', {
+        onclick: () => update(!closed),
+    }, [
         ['h3.title', {}, [
+            ['span.prefix', {}, [
+                closed ? '+' : '-',
+            ]],
             'example',
         ]],
-        ['div.children', {}, children],
+        ['div.children', {
+            className: {closed},
+            onclick: (e) => e.stopPropagation(),
+        }, children],
     ]]
 );

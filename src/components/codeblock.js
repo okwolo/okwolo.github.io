@@ -36,9 +36,9 @@ module.exports = ({language = 'javascript', children}) => {
             return child;
         }
 
-        return child.replace(pp, (match, prefix) => {
-            return prefix;
-        });
+        return child
+            .replace(pp, (match, prefix) => prefix)
+            .trim();
     });
 
     updatePrism();

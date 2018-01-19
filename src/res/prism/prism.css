@@ -2,6 +2,7 @@ pre[class*="language-"] {
     font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
     background: #330030;
     word-spacing: normal;
+    padding: 1.3em 1.5em;
     border-radius: .1em;
     word-break: normal;
     word-wrap: normal;
@@ -9,9 +10,9 @@ pre[class*="language-"] {
     white-space: pre;
     line-height: 1.5;
     text-align: left;
-    padding: 0 1.5em;
     margin: 1.5em 0;
     overflow: auto;
+    cursor: text;
 
     -moz-tab-size: 4;
     -o-tab-size: 4;

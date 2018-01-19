@@ -31,7 +31,7 @@ module.exports = [
     },
     {
         pathname: '/api/',
-        title: 'Api - okwolo',
+        title: 'API - okwolo',
         description: 'light javascript framework to build web applications',
         component: require('../pages/api'),
     },
