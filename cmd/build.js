@@ -87,6 +87,8 @@ const generateTemplates = () => {
     });
 };
 
+const once = process.argv.indexOf('--once') !== -1;
+
 const compiler = webpack(config);
 
 const watching = compiler.watch({}, (err, stats) => {
@@ -95,6 +97,9 @@ const watching = compiler.watch({}, (err, stats) => {
     } else {
         console.log(stats.toString('minimal'));
         generateTemplates();
+        if (once) {
+            process.exit(0);
+        }
     }
 });
 
@@ -103,6 +108,7 @@ process.stdin.setRawMode(true);
 process.stdin.on('keypress', (str, key) => {
     if (key.ctrl && key.name === 'c') {
         watching.close();
+        console.log('exit build');
         process.exit(0);
     }
 });

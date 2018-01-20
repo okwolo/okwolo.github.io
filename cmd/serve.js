@@ -22,6 +22,7 @@ process.stdin.setRawMode(true);
 process.stdin.on('keypress', (str, key) => {
     if (key.ctrl && key.name === 'c') {
         server.close();
+        console.log('exit serve');
         process.exit(0);
     }
 });

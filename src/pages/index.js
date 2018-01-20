@@ -2,7 +2,7 @@ module.exports = [
     {
         pathname: '/',
         title: 'okwolo',
-        description: 'light javascript framework to build web applications',
+        description: 'Light javascript framework to build web applications.',
         component: require('../pages/home'),
     },
     {
@@ -32,7 +32,7 @@ module.exports = [
     {
         pathname: '/api/',
         title: 'API - okwolo',
-        description: 'light javascript framework to build web applications',
+        description: 'Light javascript framework to build web applications.',
         component: require('../pages/api'),
     },
 ];
