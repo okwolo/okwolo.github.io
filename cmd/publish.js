@@ -6,7 +6,7 @@ const globby = require('globby');
 const mime = require('mime-types');
 
 if (!fs.existsSync('config.json')) {
-    console.error('could ont read config file (config.json)');
+    console.error('couldn\'t read config file (config.json)');
     process.exit(1);
 }
 
