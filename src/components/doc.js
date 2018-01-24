@@ -1,6 +1,7 @@
 require('./doc.scss');
 
-const Link = require('../components/link');
+const Footer = require('./footer');
+const Link = require('./link');
 
 module.exports = ({icon, name, copy, children, menu = []}) => () => (
     ['div.tile-page', {}, [
@@ -42,12 +43,6 @@ module.exports = ({icon, name, copy, children, menu = []}) => () => (
             return c;
         }, []),
         ['hr'],
-        ['div.footer.center', {}, [
-            [Link, {path: 'https://github.com/okwolo/okwolo'}, [
-                ['h2.title', {}, [
-                    'View on GitHub',
-                ]],
-            ]],
-        ]],
+        [Footer],
     ]]
 );

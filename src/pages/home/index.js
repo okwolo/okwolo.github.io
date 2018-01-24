@@ -1,6 +1,7 @@
 require('./style.scss');
 
 const Codeblock = require('../../components/codeblock');
+const Footer = require('../../components/footer');
 const Link = require('../../components/link');
 
 const tiles = [
@@ -116,12 +117,6 @@ module.exports = () => () => (
             ]],
         ]],
         ['hr'],
-        ['div.footer', {}, [
-            [Link, {path: 'https://github.com/okwolo/okwolo'}, [
-                ['h2.title', {}, [
-                    'View on GitHub',
-                ]],
-            ]],
-        ]],
+        [Footer],
     ]]
 );
