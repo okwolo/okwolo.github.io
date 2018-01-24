@@ -92,27 +92,53 @@ module.exports = () => () => (
                 );
             `]],
             ['p.copy', {}, [
-                'Components can also receive props which are derived from the element\'s attributes object. The props will always include an array of the component\'s children (empty array when there are none). The second argument is an update function. This function can be used to trigger a scoped layout update that will only affect the current the component. Arguments passed to the update function are forwarded to the element generating function.',
+                'Components can also receive props which are derived from the element\'s attributes object. The props will always include an array of the component\'s children (empty array when there are none). The second argument is an update function. This function can be used to trigger a scoped layout update that will only affect the current component. Arguments passed to the update function are forwarded to the element generating function.',
             ]],
             [Codeblock, {}, [`
-                let Component = (props, update) => (updateArgs = {}) => (
-                    ['div', {}, [
-                        ...props.children,
-                        ['span.name', {}, [
-                            updateArgs.name || props.initialName,
-                        ]],
-                        ['button', {onclick: () => update({name: 'Steve'})}, [
-                            'Steve',
-                        ]],
-                        ['button', {onclick: () => update({name: 'Emma'})}, [
-                            'Emma',
-                        ]],
-                    ]],
-                );
+                let NameComponent = (props, update) => {
+                    let displayedName = props.initialName;
+
+                    const nameChoices = [
+                        'Steve',
+                        'Emma',
+                    ];
+
+                    const changeName = (name) => () => {
+                        if (nameChoices.indexOf(name) < 0) {
+                            update('Error: Name is not in the list!');
+                            return;
+                        }
+                        displayedName = name;
+                        update();
+                    };
+
+                    return (error) => (
+                        ['div', {}, [
+                            ['div.decoration', {}, [
+                                ...props.children,
+                            ]],
+                            !!error && (
+                                ['div.error', {}, [
+                                    error,
+                                ]]
+                            ),
+                            ['span.name', {}, [
+                                displayedName,
+                            ]],
+                            ['div.buttons', {},
+                                nameChoices.map((name) => (
+                                    ['button', {onclick: changeName(name)}, [
+                                        name,
+                                    ]]
+                                )),
+                            ],
+                        ]]
+                    );
+                };
 
                 let layout = (
                     ['div', {}, [
-                        [Component, {initialName: 'John'}, [
+                        [NameComponent, {initialName: 'John'}, [
                             ['h1', {}, [
                                 'Pick your name!',
                             ]],
