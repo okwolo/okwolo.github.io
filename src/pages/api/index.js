@@ -12,10 +12,10 @@ const menu = [
     'act',
     'undo',
     'redo',
+    'resetHistory',
     'redirect',
     'show',
     'use',
-    'update',
 ];
 
 module.exports = () => () => (
@@ -242,6 +242,36 @@ module.exports = () => () => (
         ]],
         ['div.section', {}, [
             ['h2.title', {}, [
+                'app.resetHistory()',
+            ]],
+            ['p.copy', {}, [
+                'Resets the state history stacks. This will render subsequent undo/redo operations useless unless state is changed once more.',
+            ]],
+            [Codeblock, {}, [`
+                app.resetHistory();
+            `]],
+            [Example, {}, [
+                [Codeblock, {}, [`
+                    app.setState(0);
+
+                    app.use('action', {
+                        type: 'INC',
+                        target: [],
+                        handler: (state, amount = 1) => {
+                            return state + amount;
+                        },
+                    });
+
+                    app.act('INC'); // 1
+                    app.act('INC', 3); // 4
+                    app.resetHistory();
+                    app.undo(); // 4
+                    app.redo(); // 4
+                `]],
+            ]],
+        ]],
+        ['div.section', {}, [
+            ['h2.title', {}, [
                 'app.redirect()',
             ]],
             ['p.copy', {}, [
@@ -340,41 +370,6 @@ module.exports = () => () => (
                     'the dedicated page',
                 ]],
                 '.',
-            ]],
-        ]],
-        ['div.section', {}, [
-            ['h2.title', {}, [
-                'app.update()',
-            ]],
-            ['p.copy', {}, [
-                'Triggers a rerender of the whole app from current state.',
-            ]],
-            [Codeblock, {}, [`
-                app.update();
-            `]],
-            ['p.copy', {}, [
-                'This function allows "state" to be stored outside the app itself and is convenient to use when performance is a priority.',
-            ]],
-            [Example, {}, [
-                [Codeblock, {}, [`
-                    let counter = 0;
-
-                    // button clicks will not automatically change the rendered count
-                    app(() => () => (
-                        ['div', {}, [
-                            'count: ',
-                            ['pre', {}, [
-                                String(counter),
-                            ]],
-                            ['button', {onclick: () => counter++}, [
-                                'click',
-                            ]],
-                        ]]
-                    ));
-
-                    // re-renders the app which updates the count
-                    app.update();
-                `]],
             ]],
         ]],
     ]]

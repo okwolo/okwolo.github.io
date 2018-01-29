@@ -92,7 +92,10 @@ module.exports = () => () => (
                 );
             `]],
             ['p.copy', {}, [
-                'Components can also receive props which are derived from the element\'s attributes object. The props will always include an array of the component\'s children (empty array when there are none). The second argument is an update function. This function can be used to trigger a scoped layout update that will only affect the current component. Arguments passed to the update function are forwarded to the element generating function.',
+                'Components can also receive props which are derived from the element\'s attributes object. The props will always include an array of the component\'s children (empty array when there are none).',
+            ]],
+            ['p.copy', {}, [
+                'The second argument is an update function. This function can be used to trigger a scoped layout update that will only affect the current component. Arguments passed to the update function are forwarded to the element generating function..',
             ]],
             [Codeblock, {}, [`
                 let NameComponent = (props, update) => {
@@ -146,6 +149,7 @@ module.exports = () => () => (
                     ]]
                 );
             `]],
+            // TODO More explanation around update
         ]],
     ]]
 );
