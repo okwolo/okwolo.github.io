@@ -95,7 +95,7 @@ module.exports = () => () => (
                 'Components can also receive props which are derived from the element\'s attributes object. The props will always include an array of the component\'s children (empty array when there are none).',
             ]],
             ['p.copy', {}, [
-                'The second argument is an update function. This function can be used to trigger a scoped layout update that will only affect the current component. Arguments passed to the update function are forwarded to the element generating function..',
+                'The second argument is an update function. This function can be used to trigger a scoped layout update that will only affect the current component. Arguments passed to the update function are forwarded to the element generating function.',
             ]],
             [Codeblock, {}, [`
                 let NameComponent = (props, update) => {
@@ -149,7 +149,12 @@ module.exports = () => () => (
                     ]]
                 );
             `]],
-            // TODO More explanation around update
+            ['p.copy', {}, [
+                'The model of having a function X which returns a function Y which returns an element is very convenient. The first benefit is that function X will only be called once (unless the parent up the chain gets updated). This makes it the perfect place to parse props and provide clean data for the Y function to render from. Since variables declared in X are in the Y function\'s scope, they can be treated as the component\'s state and used accordingly. As shown in the above example, functions can also be declared within this scope to provide utilities to modify "state" and then update the layout when they complete.',
+            ]],
+            ['p.copy', {}, [
+                'The update function should generally not be "leaked" out of the component. If it is called after the component has been replaced, okwolo will throw an error. Calling update will add that task to a queue to be executed in the same order they are added. This means calling update within the X function (as defined in the earlier paragraph) will not preemtp the initial draw and it\'s result will be correctly displayed. It also means it is safe to call update within itself as long as the recursion avoids maxing out the stack.',
+            ]],
         ]],
     ]]
 );
