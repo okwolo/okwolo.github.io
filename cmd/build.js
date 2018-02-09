@@ -2,8 +2,10 @@ const fs = require('fs');
 const path = require('path');
 const readline = require('readline');
 
+const express = require('express');
 const okwolo = require('okwolo/server');
 const webpack = require('webpack');
+
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
@@ -103,11 +105,31 @@ const watching = compiler.watch({}, (err, stats) => {
     }
 });
 
+const serve = process.argv.indexOf('--serve') !== -1;
+let server = {close: Function};
+
+if (serve) {
+    const port = 4321;
+
+    const app = express();
+
+    app.use(express.static('dist'));
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, '../dist/index.html'));
+    });
+
+    server = app.listen(port, () => {
+        console.log('running at ' + port);
+    });
+}
+
 readline.emitKeypressEvents(process.stdin);
 process.stdin.setRawMode(true);
 process.stdin.on('keypress', (str, key) => {
     if (key.ctrl && key.name === 'c') {
         watching.close();
+        server.close();
         console.log('exit build');
         process.exit(0);
     }
