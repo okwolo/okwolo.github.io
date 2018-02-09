@@ -16,6 +16,7 @@ const menu = [
     'target',
     'update',
     'watcher',
+    'plugins',
 ];
 
 module.exports = () => () => (
@@ -247,7 +248,7 @@ module.exports = () => () => (
                 'plugins',
             ]],
             ['p.copy', {}, [
-                'To accomodate the creation of plugins, the use function can also accept an object as the first argument. This object can contain multiple blobs.',
+                'To accomodate the addition of plugins, the use function can also accept an object as the first argument. This object can contain multiple types of blobs.',
             ]],
             [Codeblock, {}, [`
                 app.use({
