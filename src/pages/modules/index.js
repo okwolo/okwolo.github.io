@@ -180,18 +180,58 @@ module.exports = () => () => (
             ['p.copy', {}, [
                 'Alone, this module does not contain functions to encode and decode the pathname. It relies on implementations of these two functions to be added by another module or through blobs. By modifying both functions, it is possible to define an entirely different syntax/storage mechanism for the routes while not needing to think about the browser\'s location. This also means the router module has absolutely no opinions on the format of the storage and that the format needs to be managed by fetch and register.',
             ]],
+        ]],
+        ['div.section', {}, [
+            ['h2.title', {}, [
+                'router.fetch',
+            ]],
+            ['p.copy', {}, [
+                'The fetch module adds the functionality to the router module to call registered path/handler combos. This same module is currently being used in both the standard and lite kits, because the route store format is the same.',
+            ]],
             [Codeblock, {}, [`
-                const fetchBlob = (store, currentPath) => {
+                // store format:
+                //  [{
+                //      pattern: RegExp,
+                //      keys: [String],
+                //      handler: Function,
+                //  }]
+                const fetchBlob = (store, path, params) => {
                     // path handler should be called here
                     // ...
                     return hasPathMatched;
                 };
-
+            `]],
+        ]],
+        ['div.section', {}, [
+            ['h2.title', {}, [
+                'router.register',
+            ]],
+            ['p.copy', {}, [
+                'This router registering module leans heavily on the "path-to-regex" npm package also being used by express. This means the features and syntax should be familiar to a large proportion of developers.',
+            ]],
+            ['p.copy', {}, [
+                'Path strings are converted to regular expressions with included capture groups for each parameter in the path. Params are variables inside the path that act as placeholders. For example, the route "/user/:id" contains an "id" param which should match with "/user/123" and "/user/456". These named params are mapped to capture groups in the fetch blob to extract information from paths.',
+            ]],
+            ['p.copy', {}, [
+                'For convenience, this module also adds support for a catch-all pattern ("**") which will match any path.',
+            ]],
+            [Codeblock, {}, [`
                 const registerBlob = (store, path, handler) => {
                     // ...
                     return store;
                 };
             `]],
+        ]],
+        ['div.section', {}, [
+            ['h2.title', {}, [
+                'router.register.lite',
+            ]],
+            ['p.copy', {}, [
+                'The lite version of the register module implements the string-to-regexp conversion instead of importing the expensive package. This means that some path variations are not supported (like parameter modifiers). However, it keeps support for simple path params.',
+            ]],
+            ['p.copy', {}, [
+                'For convenience, this module also adds support for a catch-all pattern ("**") which will match any path.',
+            ]],
         ]],
     ]]
 );
