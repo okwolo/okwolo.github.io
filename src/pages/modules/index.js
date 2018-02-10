@@ -67,8 +67,64 @@ module.exports = () => () => (
                 'state',
             ]],
             ['p.copy', {}, [
-                'Lorem Ipsum',
+                'The state module\'s primary purpose is to offer lightweight "canonical" state management for the application. It adds the getState and setState methods for convenient access to a copy of its state. It also enables accepts state handlers which are discussed in the following section.',
             ]],
+            [Codeblock, {}, [`
+                const app = core({
+                    modules: [stateModule],
+                });
+
+                app.setState('test');
+
+                app.getState(); // 'test'
+
+                app.use('handler', handlerBlob);
+            `]],
+        ]],
+        ['div.section', {}, [
+            ['h2.title', {}, [
+                'state.handler',
+            ]],
+            ['p.copy', {}, [
+                'The state module makes it possible for other modules (or a blob) to become the state handler in it\'s place. This allows the handler to manage the "setState" calls and add features around this event. This pattern is used in the standard kit where a state handler adds actions, watchers and middleware to state management.',
+            ]],
+            ['p.copy', {}, [
+                'For consistency, the standard handler adds a "SET_STATE" action and uses it to modify state when setState is called. This allows watchers and/or middleware to be interact with the action as usual.',
+            ]],
+            [Codeblock, {}, [`
+                const customHandler = (newState) => {
+                    // ...
+                    // the handler must fire an event to make the state module aware of the new state.
+                    app.send('state', newState);
+                };
+
+                // the function given to the handler blob has direct access to the real state variable.
+                const handlerBlob = (getState) => {
+                    return customHandler;
+                } 
+            `]],
+            ['p.copy', {}, [
+                'This pattern of callbacks establishes a two-way communication channel between the state module and the optionnal handler while remaining optional for kits that do not need more state logic.'
+            ]],
+            ['p.copy', {}, [
+                'The following snippet shows the different ways to interact with the "state.handler" module used in the standard kit.',
+            ]],
+            [Codeblock, {}, [`
+                const app = core({
+                    modules: [
+                        stateModule,
+                        stateHandlerModule,
+                    ],
+                });
+
+                app.use('watcher', myWatcher);
+
+                app.use('middleware', myMiddleware);
+
+                app.use('action', myAction);
+
+                app.act('actionName', actionParams...);
+            `]],
         ]],
     ]]
 );
