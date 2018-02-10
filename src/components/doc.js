@@ -3,6 +3,10 @@ require('./doc.scss');
 const Footer = require('./footer');
 const Link = require('./link');
 
+const makeID = (og) => {
+    return (og || '').replace(/\./g, '_');
+};
+
 module.exports = ({icon, name, copy, children, menu = []}) => () => (
     ['div.tile-page', {}, [
         ['div.home-link', {}, [
@@ -18,7 +22,7 @@ module.exports = ({icon, name, copy, children, menu = []}) => () => (
                     return '';
                 }
                 return (
-                    [Link, {path: `#${item}`}, [
+                    [Link, {path: `#${makeID(item)}`}, [
                         ['h3.title', {}, [
                             item,
                         ]],
@@ -38,7 +42,7 @@ module.exports = ({icon, name, copy, children, menu = []}) => () => (
             copy,
         ]],
         ...children.reduce((c, child, index) => {
-            c.push([`hr#${menu[index] || `section${index}`}`]);
+            c.push([`hr#${makeID(menu[index]) || `section${index}`}`]);
             c.push(child);
             return c;
         }, []),

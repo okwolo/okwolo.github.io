@@ -72,7 +72,7 @@ module.exports = () => () => (
             [Codeblock, {}, [`
                 const app = core({
                     modules: [stateModule],
-                });
+                })();
 
                 app.setState('test');
 
@@ -101,10 +101,10 @@ module.exports = () => () => (
                 // the function given to the handler blob has direct access to the real state variable.
                 const handlerBlob = (getState) => {
                     return customHandler;
-                } 
+                }
             `]],
             ['p.copy', {}, [
-                'This pattern of callbacks establishes a two-way communication channel between the state module and the optionnal handler while remaining optional for kits that do not need more state logic.'
+                'This pattern of callbacks establishes a two-way communication channel between the state module and the optionnal handler while remaining optional for kits that do not need more state logic.',
             ]],
             ['p.copy', {}, [
                 'The following snippet shows the different ways to interact with the "state.handler" module used in the standard kit.',
@@ -115,7 +115,7 @@ module.exports = () => () => (
                         stateModule,
                         stateHandlerModule,
                     ],
-                });
+                })();
 
                 app.use('watcher', myWatcher);
 
@@ -124,6 +124,73 @@ module.exports = () => () => (
                 app.use('action', myAction);
 
                 app.act('actionName', actionParams...);
+            `]],
+        ]],
+        ['div.section', {}, [
+            ['h2.title', {}, [
+                'state.handler.history',
+            ]],
+            ['p.copy', {}, [
+                'The state handler history module adds actions to undo and redo the application\'s state. It also exposes these actions and a function to reset the stored history on the app\'s api.',
+            ]],
+            [Codeblock, {}, [`
+                const app = core({
+                    modules: [
+                        stateModule,
+                        stateHandlerModule,
+                        stateHandlerHistoryModule,
+                    ],
+                })();
+
+                app.undo();
+
+                app.redo();
+
+                app.resetHistory();
+            `]],
+            ['p.copy', {}, [
+                'The module keeps track of a maximum of 20 past states.',
+            ]],
+        ]],
+        ['div.section', {}, [
+            ['h2.title', {}, [
+                'router',
+            ]],
+            ['p.copy', {}, [
+                'The router module offers utilities to manage the browser\'s location and to respond to it\'s changes. This includes registering routes, changing the base path and changing the view. By default, the router only calls functions. Its relationship with the view module is handled by the "primary.router.builder" module.',
+            ]],
+            [Codeblock, {}, [`
+                const app = core({
+                    modules: [routerModule],
+                })();
+
+                app.use('route', {
+                    path: '/users',
+                    handler: () => {
+                        // ...
+                    },
+                })();
+
+                app.use('base', '/acmeapp');
+
+                app.redirect('/home');
+
+                app.show('/home');
+            `]],
+            ['p.copy', {}, [
+                'Alone, this module does not contain functions to encode and decode the pathname. It relies on implementations of these two functions to be added by another module or through blobs. By modifying both functions, it is possible to define an entirely different syntax/storage mechanism for the routes while not needing to think about the browser\'s location. This also means the router module has absolutely no opinions on the format of the storage and that the format needs to be managed by fetch and register.',
+            ]],
+            [Codeblock, {}, [`
+                const fetchBlob = (store, currentPath) => {
+                    // path handler should be called here
+                    // ...
+                    return hasPathMatched;
+                };
+
+                const registerBlob = (store, path, handler) => {
+                    // ...
+                    return store;
+                };
             `]],
         ]],
     ]]
