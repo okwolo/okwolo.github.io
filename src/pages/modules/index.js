@@ -1,5 +1,6 @@
 const Codeblock = require('../../components/codeblock');
 const Doc = require('../../components/doc');
+const Link = require('../../components/link');
 
 const name = 'modules';
 const icon = '/res/icons/kits.svg';
@@ -19,6 +20,30 @@ const menu = [
     'view.string',
     'primary.router.builder',
 ];
+
+const ModuleTitle = ({children}) => {
+    let moduleName = '';
+
+    for (let i = 0; i < children.length; ++i) {
+        if (typeof children[i] === 'string') {
+            moduleName = children[i];
+        }
+    }
+
+    if (!moduleName) {
+        return () => (
+            ['h2.title', {}, children]
+        );
+    }
+
+    const path = `https://github.com/okwolo/okwolo/blob/master/src/modules/${moduleName}.js`;
+
+    return () => (
+        ['h2.title', {}, [
+            [Link, {path}, children],
+        ]]
+    );
+};
 
 module.exports = () => () => (
     [Doc, {name, icon, copy, menu}, [
@@ -63,7 +88,7 @@ module.exports = () => () => (
             ]],
         ]],
         ['div.section', {}, [
-            ['h2.title', {}, [
+            [ModuleTitle, {}, [
                 'state',
             ]],
             ['p.copy', {}, [
@@ -82,7 +107,7 @@ module.exports = () => () => (
             `]],
         ]],
         ['div.section', {}, [
-            ['h2.title', {}, [
+            [ModuleTitle, {}, [
                 'state.handler',
             ]],
             ['p.copy', {}, [
@@ -127,7 +152,7 @@ module.exports = () => () => (
             `]],
         ]],
         ['div.section', {}, [
-            ['h2.title', {}, [
+            [ModuleTitle, {}, [
                 'state.handler.history',
             ]],
             ['p.copy', {}, [
@@ -153,7 +178,7 @@ module.exports = () => () => (
             ]],
         ]],
         ['div.section', {}, [
-            ['h2.title', {}, [
+            [ModuleTitle, {}, [
                 'router',
             ]],
             ['p.copy', {}, [
@@ -182,7 +207,7 @@ module.exports = () => () => (
             ]],
         ]],
         ['div.section', {}, [
-            ['h2.title', {}, [
+            [ModuleTitle, {}, [
                 'router.fetch',
             ]],
             ['p.copy', {}, [
@@ -196,14 +221,14 @@ module.exports = () => () => (
                 //      handler: Function,
                 //  }]
                 const fetchBlob = (store, path, params) => {
-                    // path handler should be called here
+                    // path handler should be called here.
                     // ...
                     return hasPathMatched;
                 };
             `]],
         ]],
         ['div.section', {}, [
-            ['h2.title', {}, [
+            [ModuleTitle, {}, [
                 'router.register',
             ]],
             ['p.copy', {}, [
@@ -223,7 +248,7 @@ module.exports = () => () => (
             `]],
         ]],
         ['div.section', {}, [
-            ['h2.title', {}, [
+            [ModuleTitle, {}, [
                 'router.register.lite',
             ]],
             ['p.copy', {}, [
@@ -232,6 +257,55 @@ module.exports = () => () => (
             ['p.copy', {}, [
                 'For convenience, this module also adds support for a catch-all pattern ("**") which will match any path.',
             ]],
+        ]],
+        ['div.section', {}, [
+            [ModuleTitle, {}, [
+                'view',
+            ]],
+            ['p.copy', {}, [
+                'The view module is built to have no assumptions about the environment or about what type of render target is being output. This makes it more of a controller/orchestrator and allows things like render-to-string to exist. To do it\'s job, it needs a target, a builder function, a build function, a draw function, and an update function. More details about each of these blobs can be found on the ',
+                [Link, {path: '/blobs/'}, ['dedicated page']],
+                '. The module allows any of these blobs to change at any time and provides clear feedback if something is missing or invalid.',
+            ]],
+            ['p.copy', {}, [
+                'The view module keeps track of two variables. The first one is a copy of the state. This copy is updated each time the state changes (by listening for the "state" event) and is used to rerender layout when one of the view blobs change. The second variable is the arbitrary layout data returned by both the draw and update blobs. This data is also passed to the update blob and can therefore be used to store any information about the view (ex. vdom).',
+            ]],
+            ['p.copy', {}, [
+                'The view module also changes the app\'s primary function to make it update the builder func.',
+            ]],
+            [Codeblock, {}, [`
+                const app = core({
+                    modules: [viewModule],
+                })();
+
+                app.use('target', targetBlob);
+
+                app.use('builder', builderBlob);
+
+                app.use('build', buildBlob);
+
+                app.use('draw', drawBlob);
+
+                app.use('update', updateBlob);
+
+                app(() => builderBlob);
+            `]],
+            ['p.copy', {}, [
+                'This module can also be interacted with using two events: "update" and "sync". Both these events are also used internally and can be listened for from outside to give insight into the app\'s inner workings.',
+            ]],
+            [Codeblock, {}, [`
+                const app = core({
+                    modules: [viewModule],
+                })();
+
+                // updates layout using the update blob or the draw blob.
+                app.send('update', forceRedraw);
+
+                // updates a specific section of layout using the update blob.
+                // the successor layout bypasses the state > builder > build pipeline.
+                // identity can be used to confirm that the right element is being updated.
+                app.send('sync', address, successor, identity);
+            `]],
         ]],
     ]]
 );

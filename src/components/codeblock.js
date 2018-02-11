@@ -10,9 +10,11 @@ const updatePrism = () => {
     }
     updateRequested = true;
     window.setTimeout(() => {
-        console.log('updated prism');
-        updateRequested = false;
-        window.Prism.highlightAll();
+        window.requestAnimationFrame(() => {
+            console.log('updated prism');
+            updateRequested = false;
+            window.Prism.highlightAll();
+        });
     }, 50);
 };
 
