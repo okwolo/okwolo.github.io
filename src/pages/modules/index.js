@@ -307,5 +307,61 @@ module.exports = () => () => (
                 app.send('sync', address, successor, identity);
             `]],
         ]],
+        ['div.section', {}, [
+            [ModuleTitle, {}, [
+                'view.build',
+            ]],
+            ['p.copy', {}, [
+                'The "view.build" module is a responsible for adding the build blob to the app. This build function is responsible for taking the output of the builder and transforming it into valid vdom, or throwing a syntax error. This also means it needs to be able to "unroll" components and initiate their updates using the "sync" event.',
+            ]],
+        ]],
+        ['div.section', {}, [
+            [ModuleTitle, {}, [
+                'view.dom',
+            ]],
+            ['p.copy', {}, [
+                'The "view.dom" module adds both the "draw" and the "update" blobs to the app. This is the only module (except "router") which should be aware of the browser and the document.',
+            ]],
+        ]],
+        ['div.section', {}, [
+            [ModuleTitle, {}, [
+                'view.string',
+            ]],
+            ['p.copy', {}, [
+                'The "view.string" module also adds the "draw" and "update" blobs, but makes them render to a safe html string.',
+            ]],
+        ]],
+        ['div.section', {}, [
+            [ModuleTitle, {}, [
+                'primary.router.builder',
+            ]],
+            ['p.copy', {}, [
+                'This module exists to avoid making the router and view modules coupled. It changes the app\'s primary function to a wrapper which makes it easier to create routes which change the builder.',
+            ]],
+            [Codeblock, {}, [`
+                // without primary.router.builder module.
+                app.use('route', {
+                    path: '/user/:id',
+                    handler: ({id}) => {
+                        app.use('builder', (state) => {
+                            // ...
+                            return layout;
+                        });
+                    },
+                });
+
+                // with primary.router.builder module.
+                app('/user/:id', ({id}) => (state) => {
+                    // ...
+                    return layout;
+                });
+
+                // maintains support for route-less builders.
+                app(() => (state) => {
+                    // ...
+                    return layout;
+                });
+            `]],
+        ]],
     ]]
 );
