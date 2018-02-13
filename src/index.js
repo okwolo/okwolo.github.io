@@ -1,5 +1,8 @@
 require('./style.scss');
 
+require('./prism.scss');
+require('./prism.js');
+
 const app = require('./app');
 const pages = require('./pages');
 

@@ -314,6 +314,12 @@ module.exports = () => () => (
             ['p.copy', {}, [
                 'The "view.build" module is a responsible for adding the build blob to the app. This build function is responsible for taking the output of the builder and transforming it into valid vdom, or throwing a syntax error. This also means it needs to be able to "unroll" components and initiate their updates using the "sync" event.',
             ]],
+            [Codeblock, {}, [`
+                const buildBlob = (element, queue) => {
+                    // ...
+                    return vdom;
+                };
+            `]],
         ]],
         ['div.section', {}, [
             [ModuleTitle, {}, [
@@ -322,6 +328,17 @@ module.exports = () => () => (
             ['p.copy', {}, [
                 'The "view.dom" module adds both the "draw" and the "update" blobs to the app. This is the only module (except "router") which should be aware of the browser and the document.',
             ]],
+            [Codeblock, {}, [`
+                const drawBlob = (target, buildOutput) => {
+                    // ...
+                    return buildOutput;
+                };
+
+                const updateBlob = (target, buildOutput, address, view, identity) => {
+                    // ...
+                    return view;
+                };
+            `]],
         ]],
         ['div.section', {}, [
             [ModuleTitle, {}, [
@@ -330,6 +347,15 @@ module.exports = () => () => (
             ['p.copy', {}, [
                 'The "view.string" module also adds the "draw" and "update" blobs, but makes them render to a safe html string.',
             ]],
+            [Codeblock, {}, [`
+                const toString = (target, vdom) => {
+                    target.innerHTML = magicallyStringify(vdom);
+                    return vdom;
+                };
+
+                const drawBlob = toString;
+                const updateBlob = toString;
+            `]],
         ]],
         ['div.section', {}, [
             [ModuleTitle, {}, [

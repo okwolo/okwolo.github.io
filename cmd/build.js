@@ -10,8 +10,9 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
-// ignore sass file requires when building static pages
+// ignore style file requires when building static pages
 require.extensions['.scss'] = (module) => module.exports = '';
+require.extensions['.css'] = (module) => module.exports = '';
 
 const config = {
     entry: './src/index.js',
@@ -30,7 +31,7 @@ const config = {
                 },
             },
         }, {
-            test: /\.scss$/,
+            test: /\.s?css$/,
             use: ExtractTextPlugin.extract({
                 use: [{
                     loader: 'css-loader',
