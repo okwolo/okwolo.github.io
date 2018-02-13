@@ -81,7 +81,7 @@ module.exports = () => () => (
                 'Alternatively, the library can be imported using a script tag. The okwolo function will be available in the global window object.',
             ]],
             [Codeblock, {}, [`
-                <script src="/standard.min.js"></script>
+                <script src="https://dl.okwolo.org/standard.min.js"></script>
             `]],
             ['p.copy', {}, [
                 'Here is a small Hello-World application which demonstrates the use of the router and some basic view syntax.',
@@ -114,6 +114,34 @@ module.exports = () => () => (
                     'api guide',
                 ]],
                 '.',
+            ]],
+        ]],
+        ['hr#about'],
+        ['div.about', {}, [
+            ['h2.title', {}, [
+                'About',
+            ]],
+            ['p.copy', {}, [
+                'Okwolo is meant to be used and distributed in kits, each with their own unique flavor and purpose. Although there are currently only three officially supported kits, the modules they are built from are can be reused and replaced easily.',
+            ]],
+            ['p.copy', {}, [
+                'Okwolo\'s kits/modules are designed to support asynchronous configuration. This means that an instanciated app\'s config can be modified at any time without needing to be restarted. An example use case of this property would be to progressively load a web app\'s routes/actions while a user is navigating a page.',
+            ]],
+            ['p.copy', {}, [
+                'Each module also contains a lot of error catching code to fail as fast as possible when a problem occurs, and to provide clear and useful feedback. This means errors should always have added context. If you find an error that is not handled, please ',
+                [Link, {path: 'https://github.com/okwolo/okwolo/issues/new'}, ['open an issue']],
+                '.',
+            ]],
+            ['p.copy', {}, [
+                'The two client side kits "standard" and "lite" come ready with a built-in client-side router. The "standard" kit also includes more advanced state management which takes inspiration from the redux pattern.',
+            ]],
+            ['p.copy', {}, [
+                'The view portion of okowlo is uses a vdom implementation which runs keyed diffs to update layout. It also allows for scoped updates of this layout to update individual components. For more details about components, visit the ',
+                [Link, {path: '/syntax/'}, ['syntax page']],
+                '.',
+            ]],
+            ['p.copy', {}, [
+                'For the view syntax, a decision was made early on to avoid non-standard javascript language features. Although things like jsx or vue\'s single-file-components are powerful tools, they add distance between the developer and the code running in the browser. Not only do these new constructs need to be learned, it also means that users who transpile get a different experience from those using a simple script tag to load the library.',
             ]],
         ]],
         ['hr'],
