@@ -71,10 +71,10 @@ module.exports = () => () => (
                 });
             `]],
             ['p.copy', {}, [
-                'Module names should express their purpose and make dependencies clear. For example, the state handler module depends on the state one and is therefore named "state.handler" even if handler might suffice.',
+                'Module names should express their purpose and make dependencies clear. For example, the state handler module depends on the state one and is therefore named "state.handler", even if handler might suffice.',
             ]],
             ['p.copy', {}, [
-                'By convention, all cross-module communication should be done through the app\'s bus to lower coupling and allow for inspection. Another convention followed by the modules is that all events being fired or listened for should be clearly indicated in a comment at the top of the file. Here is an example header from the state module.',
+                'Another convention followed by the modules is that all events being fired or listened for should be clearly indicated in a comment at the top of the file. Here is an example header from the state module.',
             ]],
             [Codeblock, {}, [`
                 // @fires   state        [state]
@@ -84,7 +84,7 @@ module.exports = () => () => (
                 // @listens blob.handler
             `]],
             ['p.copy', {}, [
-                'Events fired by the module should include additional information about the receiving modules (even when it is the same module).',
+                'In this notation, fired events include additional information about the receiving modules (even when it is the same module).',
             ]],
         ]],
         ['div.section', {}, [
@@ -92,7 +92,7 @@ module.exports = () => () => (
                 'state',
             ]],
             ['p.copy', {}, [
-                'The state module\'s primary purpose is to offer lightweight "canonical" state management for the application. It adds the getState and setState methods for convenient access to a copy of its state. It also enables accepts state handlers which are discussed in the following section.',
+                'The state module\'s primary purpose is to offer lightweight "canonical" state management for the application. It adds the getState and setState methods for convenient access to a copy of its state. It also accepts a state handler which is discussed in the following section.',
             ]],
             [Codeblock, {}, [`
                 const app = core({

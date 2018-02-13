@@ -9,7 +9,7 @@ const copy = 'The view syntax is designed with a priority given to familiarity a
 module.exports = () => () => (
     [Doc, {name, icon, copy}, [
         ['div.section', {}, [
-            ['h2.title', {}, [
+            ['h2#text.title', {}, [
                 'text elements',
             ]],
             [Codeblock, {}, [`
@@ -23,7 +23,7 @@ module.exports = () => () => (
             ]],
         ]],
         ['div.section', {}, [
-            ['h2.title', {}, [
+            ['h2#elements.title', {}, [
                 'tag elements',
             ]],
             ['p.copy', {}, [
@@ -74,7 +74,7 @@ module.exports = () => () => (
             `]],
         ]],
         ['div.section', {}, [
-            ['h2.title', {}, [
+            ['h2#components.title', {}, [
                 'components',
             ]],
             ['p.copy', {}, [

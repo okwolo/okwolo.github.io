@@ -12,13 +12,16 @@ app.use('target', wrapper);
 
 app.setState({});
 
+app.on('redirect', () => {
+    window.scrollTo(0, 0);
+});
+
 pages.forEach(({pathname, title, component}) => {
     app(pathname, () => () => {
         document.title = title;
         if (!window.location.hash) {
             wrapper.style.opacity = 0;
             setTimeout(() => {
-                window.scrollTo(0, 0);
                 wrapper.style.opacity = 1;
             }, 0);
         }
