@@ -18,5 +18,16 @@ module.exports = () => () => (
                 'View on GitHub',
             ]],
         ]],
+        ['a.link.top', {
+            href: '',
+            onclick: (e) => {
+                window.scrollTo(0, 0);
+                e.preventDefault();
+            },
+        }, [
+            ['h2.title', {}, [
+                'top',
+            ]],
+        ]],
     ]]
 );
