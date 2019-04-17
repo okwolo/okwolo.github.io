@@ -137,7 +137,7 @@ module.exports = () => () => (
                 'draw',
             ]],
             ['p.copy', {}, [
-                'The draw function handles the inital drawing to a new target. It should return a view object that will be given to the update function. The format of this object is not enforced. Note that the view module does not verify the type of the target and it is therefore good practice to make these checks before intracting with the target.',
+                'The draw function handles the initial drawing to a new target. It should return a view object that will be given to the update function. The format of this object is not enforced. Note that the view module does not verify the type of the target and it is therefore good practice to make these checks before interacting with the target.',
             ]],
             [Codeblock, {}, [`
                 app.use('draw', (target, vdom) => {
@@ -207,7 +207,7 @@ module.exports = () => () => (
         ]],
         ['div.section', {}, [
             ['h2.title', {}, [
-                'udpate',
+                'update',
             ]],
             ['p.copy', {}, [
                 'The update function updates the target with new vdom. It also receives the update address and the view object from a draw or a previous render as third and fourth arguments respectively. However, there is no defined format for either of these values and they can be omitted if not necessary.',
@@ -232,7 +232,7 @@ module.exports = () => () => (
                 'watcher',
             ]],
             ['p.copy', {}, [
-                'Watchers are funtctions that get called after all state changes. They cannot modify the state directly since they are given a copy, but they can safely issue more actions.',
+                'Watchers are functions that get called after all state changes. They cannot modify the state directly since they are given a copy, but they can safely issue more actions.',
             ]],
             [Codeblock, {}, [`
                 app.use('watcher', (state, actionType, params) => {
@@ -248,7 +248,7 @@ module.exports = () => () => (
                 'plugins',
             ]],
             ['p.copy', {}, [
-                'To accomodate the addition of plugins, the use function can also accept an object as the first argument. This object can contain multiple types of blobs.',
+                'To accommodate the addition of plugins, the use function can also accept an object as the first argument. This object can contain multiple types of blobs.',
             ]],
             [Codeblock, {}, [`
                 app.use({
@@ -262,7 +262,7 @@ module.exports = () => () => (
             [Codeblock, {}, [`
                 let myPlugin = {
                     name: 'myPluginName',
-                    middleware: myMiddlware,
+                    middleware: myMiddleware,
                 }
 
                 app.use(myPlugin);

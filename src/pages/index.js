@@ -20,13 +20,13 @@ module.exports = [
     {
         pathname: '/modules/',
         title: 'Modules - okwolo',
-        description: 'Modules are very similar in purpose and capabilities to blobs, but they differ in the sense that they have already been consumed by the app at creation time. This also alows them to have privileged access to the app\'s "official" global object.',
+        description: 'Modules are very similar in purpose and capabilities to blobs, but they differ in the sense that they have already been consumed by the app at creation time. This also allows them to have privileged access to the app\'s "official" global object.',
         component: require('../pages/modules'),
     },
     {
         pathname: '/kits/',
         title: 'Kits - okwolo',
-        description: 'Kits represent preconfigured app bundles. These bundles are built from a group of modules and can be customized infinitely to add or remove features to the produced app as a project demands it. Okwolo currently ships with three different kits which share many modules, but behave very differently.',
+        description: 'Kits represent pre-configured app bundles. These bundles are built from a group of modules and can be customized infinitely to add or remove features to the produced app as a project demands it. Okwolo currently ships with three different kits which share many modules, but behave very differently.',
         component: require('../pages/kits'),
     },
     {

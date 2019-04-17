@@ -88,7 +88,7 @@ module.exports = () => () => (
                 const okwolo = require('okwolo/server');
             `]],
             ['p.copy', {}, [
-                'The server kit is meant to be used as a server-side rendering tool. Since it is only concerned with producing html from state, there is no need for the router module or the elabotate state handling. It\'s larger size is due to the built-in character escaping library which sanitizes rendered text nodes.',
+                'The server kit is meant to be used as a server-side rendering tool. Since it is only concerned with producing html from state, there is no need for the router module or the elaborate state handling. It\'s larger size is due to the built-in character escaping library which sanitizes rendered text nodes.',
             ]],
             ['p.copy', {}, [
                 'The following example shows the minimal setup.',

@@ -15,11 +15,11 @@ const tiles = [
     },
     {
         title: 'modules',
-        copy: 'Modules are very similar in purpose and capabilities to blobs, but they differ in the sense that they have already been consumed by the app at creation time. This also alows them to have privileged access to the app\'s "official" global object.',
+        copy: 'Modules are very similar in purpose and capabilities to blobs, but they differ in the sense that they have already been consumed by the app at creation time. This also allows them to have privileged access to the app\'s "official" global object.',
     },
     {
         title: 'kits',
-        copy: 'Kits represent preconfigured app bundles. These bundles are built from a group of modules and can be customized infinitely to add or remove features to the produced app as a project demands it. Okwolo currently ships with three different kits which share many modules, but behave very differently.',
+        copy: 'Kits represent pre-configured app bundles. These bundles are built from a group of modules and can be customized infinitely to add or remove features to the produced app as a project demands it. Okwolo currently ships with three different kits which share many modules, but behave very differently.',
     },
 ];
 
@@ -125,7 +125,7 @@ module.exports = () => () => (
                 'Okwolo is meant to be used and distributed in kits, each with their own unique flavor and purpose. Although there are currently only three officially supported kits, the modules they are built from are can be reused and replaced easily.',
             ]],
             ['p.copy', {}, [
-                'Okwolo\'s kits/modules are designed to support asynchronous configuration. This means that an instanciated app\'s config can be modified at any time without needing to be restarted. An example use case of this property would be to progressively load a web app\'s routes/actions while a user is navigating a page.',
+                'Okwolo\'s kits/modules are designed to support asynchronous configuration. This means that an instantiated app\'s config can be modified at any time without needing to be restarted. An example use case of this property would be to progressively load a web app\'s routes/actions while a user is navigating a page.',
             ]],
             ['p.copy', {}, [
                 'Each module also contains a lot of error catching code to fail as fast as possible when a problem occurs, and to provide clear and useful feedback. This means errors should always have added context. If you find an error that is not handled, please ',
@@ -136,7 +136,7 @@ module.exports = () => () => (
                 'The two client side kits "standard" and "lite" come ready with a built-in client-side router. The "standard" kit also includes more advanced state management which takes inspiration from the redux pattern.',
             ]],
             ['p.copy', {}, [
-                'The view portion of okowlo is uses a vdom implementation which runs keyed diffs to update layout. It also allows for scoped updates of this layout to update individual components. For more details about components, visit the ',
+                'The view portion of okowlo uses a vdom implementation which runs keyed diffs to update layout. It also allows for scoped updates of this layout to update individual components. For more details about components, visit the ',
                 [Link, {path: '/syntax/'}, ['syntax page']],
                 '.',
             ]],

@@ -160,14 +160,14 @@ module.exports = () => () => (
             [Example, {}, [
                 [Codeblock, {}, [`
                     app.setState({
-                        friendlist: [],
+                        friends: [],
                     });
 
                     app.use('action', {
                         type: 'ADD_FRIEND',
                         target: [],
                         handler: (state, newFriend) => {
-                            state.friendlist.push(newFriend);
+                            state.friends.push(newFriend);
                             return state;
                         },
                     });
@@ -350,7 +350,7 @@ module.exports = () => () => (
                     ]);
 
                     const plugin = {
-                        name: 'my-middlware-plugin',
+                        name: 'my-middleware-plugin',
                         middleware: (next, state, actionType, params) => {
                             if (state.items.length === 0) {
                                 params.empty = true;

@@ -4,7 +4,7 @@ const Link = require('../../components/link');
 
 const name = 'modules';
 const icon = '/res/icons/kits.svg';
-const copy = 'Modules are very similar in purpose and capabilities to blobs, but they differ in the sense that they have already been consumed by the app at creation time. This also alows them to have privileged access to the app\'s "official" global object.';
+const copy = 'Modules are very similar in purpose and capabilities to blobs, but they differ in the sense that they have already been consumed by the app at creation time. This also allows them to have privileged access to the app\'s "official" global object.';
 const menu = [
     null,
     'state',
@@ -129,7 +129,7 @@ module.exports = () => () => (
                 }
             `]],
             ['p.copy', {}, [
-                'This pattern of callbacks establishes a two-way communication channel between the state module and the optionnal handler while remaining optional for kits that do not need more state logic.',
+                'This pattern of callbacks establishes a two-way communication channel between the state module and the optional handler while remaining optional for kits that do not need more state logic.',
             ]],
             ['p.copy', {}, [
                 'The following snippet shows the different ways to interact with the "state.handler" module used in the standard kit.',
@@ -196,7 +196,7 @@ module.exports = () => () => (
                     },
                 })();
 
-                app.use('base', '/acmeapp');
+                app.use('base', '/acme');
 
                 app.redirect('/home');
 
@@ -268,7 +268,7 @@ module.exports = () => () => (
                 '. The module allows any of these blobs to change at any time and provides clear feedback if something is missing or invalid.',
             ]],
             ['p.copy', {}, [
-                'The view module keeps track of two variables. The first one is a copy of the state. This copy is updated each time the state changes (by listening for the "state" event) and is used to rerender layout when one of the view blobs change. The second variable is the arbitrary layout data returned by both the draw and update blobs. This data is also passed to the update blob and can therefore be used to store any information about the view (ex. vdom).',
+                'The view module keeps track of two variables. The first one is a copy of the state. This copy is updated each time the state changes (by listening for the "state" event) and is used to re-render layout when one of the view blobs change. The second variable is the arbitrary layout data returned by both the draw and update blobs. This data is also passed to the update blob and can therefore be used to store any information about the view (ex. vdom).',
             ]],
             ['p.copy', {}, [
                 'The view module also changes the app\'s primary function to make it update the builder func.',

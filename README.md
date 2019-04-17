@@ -14,7 +14,7 @@ npm run aws-deploy
 
 By default, this command will build and upload all files from the `/dist` directory except ones in `/dist/res`. Note that this will override the files in the s3 bucket.
 
-To include changes to the resouces folder in the deployment:
+To include changes to the resources folder in the deployment:
 
 ```
 npm run aws-deploy -- --includeResources
